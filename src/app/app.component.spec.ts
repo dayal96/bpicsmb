@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'bpicsmb'`, () => {
+  it(`should have as title 'bpicsmn'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('bpicsmb');
+    expect(app.title).toEqual('bpicsmn');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('bpicsmb app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('bpicsmn app is running!');
   });
 });

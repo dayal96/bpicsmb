@@ -3,16 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ResizableFrameComponent } from './resizable-frame/resizable-frame.component';
+import { ResizableFrameComponent } from './common/resizable-frame/resizable-frame.component';
+import { EditScreenComponent } from './editor/edit-screen/edit-screen.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ResizableFrameComponent
+    EditScreenComponent,
+    ResizableFrameComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

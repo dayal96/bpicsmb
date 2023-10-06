@@ -1,18 +1,11 @@
 <div style="height:100vh">
-<resizable-frame [size]="20" [direction]="'HORIZONTAL'" [sizeMin]="10" [sizeMax]="90">
+<resizable-frame [size]="10" [direction]="'HORIZONTAL'" [sizeMin]="10" [sizeMax]="90">
   <div first>
     LEFT NAV
   </div>
-  
-  <resizable-frame [size]="70" [direction]="'VERTICAL'" [sizeMin]="10" [sizeMax]="90" second>
-      <resizable-frame [size]="50" [direction]="'HORIZONTAL'" [sizeMin]="10" [sizeMax]="90" [resizable]="true" first>
-        <div first>REQUEST 1</div>
-        <div second>REQUEST 2</div>
-      </resizable-frame>
-    <div second>
-      TERMINAL
-    </div>
-  </resizable-frame>
+
+  <edit-screen second>
+  </edit-screen>
 </resizable-frame>
 </div>
 

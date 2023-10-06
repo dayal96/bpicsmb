@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild, ɵdetectChanges } from '@angular/core';
 
 @Component({
   selector: 'resizable-frame',
   templateUrl: './resizable-frame.component.html',
-  styleUrls: ['./resizable-frame.component.scss']
+  styleUrls: ['./resizable-frame.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ResizableFrameComponent implements OnInit, AfterViewInit {
   @Input() size: number = 50;
@@ -27,6 +28,10 @@ export class ResizableFrameComponent implements OnInit, AfterViewInit {
 
   @ViewChild('dragArea')
   dragAreaRef!: ElementRef<HTMLDivElement>;
+
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
+    
+  }
 
   mouseDown = (evt: MouseEvent) => {
     if (this.active) {
@@ -75,6 +80,7 @@ export class ResizableFrameComponent implements OnInit, AfterViewInit {
       this._gen_style['grid-template-rows'] = undefined;
       this._edgeClass = 'v-layout';
     }
+    this.changeDetectorRef.detectChanges();
   }
 
   ngAfterViewInit(): void {

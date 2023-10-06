@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "bpicsmb": {
+    "bpicsmn": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "bpicsmb:build:production"
+              "browserTarget": "bpicsmn:build:production"
             },
             "development": {
-              "browserTarget": "bpicsmb:build:development"
+              "browserTarget": "bpicsmn:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bpicsmb:build"
+            "browserTarget": "bpicsmn:build"
           }
         },
         "test": {
