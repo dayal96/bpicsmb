@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { ResizableFrameComponent } from './common/resizable-frame/resizable-frame.component';
 import { EditScreenComponent } from './editor/edit-screen/edit-screen.component';
 import { FormsModule } from '@angular/forms';
+import { TabEditorComponent } from './editor/tab-editor/tab-editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EditScreenComponent,
     ResizableFrameComponent,
+    TabEditorComponent,
   ],
   imports: [
     AppRoutingModule,

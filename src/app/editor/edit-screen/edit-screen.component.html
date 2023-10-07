@@ -1,2 +1,9 @@
-<textarea class="editor-content" wrap="off" [ngModel]="content" (ngModelChange)="contentUpdate($event)" (selectstart)="updateCursorStart($event)" #textEditor>
+<textarea
+  class="editor-content"
+  wrap="off"
+  value="This text can be edited by the user."
+  [ngModel]="content"
+  (ngModelChange)="contentUpdate($event)"
+  #textEditor
+>
 </textarea>
