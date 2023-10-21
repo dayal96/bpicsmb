@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditScreenComponent } from './edit-screen.component';
+import { TextEditorComponent } from './text-editor.component';
 
 describe('EditScreenComponent', () => {
-  let component: EditScreenComponent;
-  let fixture: ComponentFixture<EditScreenComponent>;
+  let component: TextEditorComponent;
+  let fixture: ComponentFixture<TextEditorComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EditScreenComponent]
+      declarations: [TextEditorComponent],
     });
-    fixture = TestBed.createComponent(EditScreenComponent);
+    fixture = TestBed.createComponent(TextEditorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,7 +1,11 @@
 <div class="frame-container" [ngStyle]="_gen_style" #frameContainer>
-  <div><ng-content select="[first]" #first></ng-content></div>
+  <div class="no-min-size" #first>
+    <ng-content select="[first]"></ng-content>
+  </div>
   <div [ngClass]="_edgeClass" #dragArea>
     <div #edge></div>
   </div>
-  <div><ng-content select="[second]" #second></ng-content></div>
+  <div class="no-min-size" #second>
+    <ng-content select="[second]"></ng-content>
+  </div>
 </div>

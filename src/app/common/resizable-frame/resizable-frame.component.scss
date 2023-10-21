@@ -1,7 +1,12 @@
 .frame-container {
   display: grid;
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
+}
+
+.no-min-size {
+  min-width: 0px;
+  min-height: 0px;
 }
 
 .h-layout {

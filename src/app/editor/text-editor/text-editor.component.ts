@@ -11,12 +11,12 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'edit-screen',
-  templateUrl: './edit-screen.component.html',
-  styleUrls: ['./edit-screen.component.scss'],
+  selector: 'text-editor',
+  templateUrl: './text-editor.component.html',
+  styleUrls: ['./text-editor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EditScreenComponent implements AfterViewInit {
+export class TextEditorComponent implements AfterViewInit {
   @Input() content: string = '';
   @Output() contentChange = new EventEmitter<string>();
   cursorPos: number = 0;
@@ -30,22 +30,24 @@ export class EditScreenComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.textEditorRef.nativeElement.addEventListener(
       'keydown',
-      this.tabHandler
+      this.keyHandler
     );
   }
 
-  tabHandler = (event: KeyboardEvent): void => {
-    if (event.key != 'Tab') {
-      return;
+  keyHandler = (event: KeyboardEvent): void => {
+    if (event.key == 'Tab') {
+      this.tabHandler();
+      event.preventDefault();
     }
+  };
 
+  tabHandler(): void {
     const pos = this.textEditorRef.nativeElement.selectionStart;
     this.content =
       this.content.substring(0, pos) + '\t' + this.content.substring(pos);
     this.updatePos(pos + 1);
     this.changeDetectorRef.detectChanges();
-    event.preventDefault();
-  };
+  }
 
   updatePos(pos: number): void {
     setTimeout(() => {

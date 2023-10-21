@@ -1,4 +1,13 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild, ɵdetectChanges } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'resizable-frame',
@@ -17,7 +26,7 @@ export class ResizableFrameComponent implements OnInit, AfterViewInit {
   _sizeMin: number = 0;
   _sizeMax: number = 100;
   active = false;
-  start:number = -1;
+  start: number = -1;
   _gen_style: GridStyle = {} as GridStyle;
 
   @ViewChild('frameContainer')
@@ -29,9 +38,7 @@ export class ResizableFrameComponent implements OnInit, AfterViewInit {
   @ViewChild('dragArea')
   dragAreaRef!: ElementRef<HTMLDivElement>;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {
-    
-  }
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   mouseDown = (evt: MouseEvent) => {
     if (this.active) {
@@ -51,7 +58,7 @@ export class ResizableFrameComponent implements OnInit, AfterViewInit {
     this.active = false;
     this.start = -1;
     evt.preventDefault();
-  }
+  };
 
   mouseMove = (evt: MouseEvent) => {
     if (!this.active) {
@@ -60,14 +67,16 @@ export class ResizableFrameComponent implements OnInit, AfterViewInit {
 
     const flowHori = this.direction == 'HORIZONTAL';
     const mousePos = flowHori ? evt.clientX : evt.clientY;
-    const divSize = flowHori ? this.frameContainer.nativeElement.clientWidth : this.frameContainer.nativeElement.clientHeight;
+    const divSize = flowHori
+      ? this.frameContainer.nativeElement.clientWidth
+      : this.frameContainer.nativeElement.clientHeight;
 
-    const deltaSize = (mousePos - this.start) / (divSize ?? 1) * 100;
+    const deltaSize = ((mousePos - this.start) / (divSize ?? 1)) * 100;
     this._size += deltaSize;
     this._size = Math.max(this._sizeMin, Math.min(this._size, this._sizeMax));
     this.start = mousePos;
     this.updateStyle();
-  }
+  };
 
   updateStyle() {
     const style = this._size + 'fr' + ' auto ' + (100 - this._size) + 'fr';
@@ -85,9 +94,12 @@ export class ResizableFrameComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     if (this.resizable) {
-      this.dragAreaRef.nativeElement.addEventListener('mousedown', this.mouseDown);
+      this.dragAreaRef.nativeElement.addEventListener(
+        'mousedown',
+        this.mouseDown
+      );
       document.addEventListener('mouseup', this.mouseUp);
-      document.addEventListener('mousemove', this.mouseMove)
+      document.addEventListener('mousemove', this.mouseMove);
     }
   }
 

@@ -1,12 +1,14 @@
-<div style="height:100vh">
-<resizable-frame [size]="10" [direction]="'HORIZONTAL'" [sizeMin]="10" [sizeMax]="90">
-  <div first>
-    LEFT NAV
-  </div>
+<div style="height: 100vh">
+  <resizable-frame
+    [size]="10"
+    [direction]="'HORIZONTAL'"
+    [sizeMin]="10"
+    [sizeMax]="90"
+  >
+    <div first>LEFT NAV</div>
 
-  <edit-screen second>
-  </edit-screen>
-</resizable-frame>
+    <tab-editor second> </tab-editor>
+  </resizable-frame>
 </div>
 
 <router-outlet></router-outlet>

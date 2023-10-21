@@ -1,1 +1,12 @@
-<p>tab-editor works!</p>
+<div class="editor">
+  <div class="top-bar">
+    <span *ngFor="let tab of tabs" class="tab" (click)="switch(tab)">
+      {{ tab.title + (tab.saved ? "" : "*") }}
+    </span>
+  </div>
+  <text-editor
+    *ngIf="!!activeTab"
+    [(content)]="activeTab.content"
+    (contentChange)="markAsChanged(activeTab)"
+  ></text-editor>
+</div>
