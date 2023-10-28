@@ -7,6 +7,7 @@ import { ResizableFrameComponent } from './common/resizable-frame/resizable-fram
 import { TextEditorComponent } from './editor/text-editor/text-editor.component';
 import { FormsModule } from '@angular/forms';
 import { TabEditorComponent } from './editor/tab-editor/tab-editor.component';
+import { RequestEditorComponent } from './editor/request-editor/request-editor/request-editor.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { TabEditorComponent } from './editor/tab-editor/tab-editor.component';
     TextEditorComponent,
     ResizableFrameComponent,
     TabEditorComponent,
+    RequestEditorComponent,
   ],
   imports: [AppRoutingModule, BrowserModule, FormsModule],
   providers: [],

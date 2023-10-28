@@ -45,6 +45,8 @@ export class ResizableFrameComponent implements OnInit, AfterViewInit {
       return;
     }
 
+    document.body.style.cursor =
+      this.direction == 'HORIZONTAL' ? 'col-resize' : 'row-resize';
     this.active = true;
     this.start = this.direction == 'HORIZONTAL' ? evt.clientX : evt.clientY;
     evt.preventDefault();
@@ -55,6 +57,7 @@ export class ResizableFrameComponent implements OnInit, AfterViewInit {
       return;
     }
 
+    document.body.style.cursor = 'default';
     this.active = false;
     this.start = -1;
     evt.preventDefault();
@@ -74,7 +77,10 @@ export class ResizableFrameComponent implements OnInit, AfterViewInit {
     const deltaSize = ((mousePos - this.start) / (divSize ?? 1)) * 100;
     this._size += deltaSize;
     this._size = Math.max(this._sizeMin, Math.min(this._size, this._sizeMax));
-    this.start = mousePos;
+    this.start = Math.max(
+      (this._sizeMin * divSize) / 100,
+      Math.min((this._sizeMax * divSize) / 100, mousePos)
+    );
     this.updateStyle();
   };
 

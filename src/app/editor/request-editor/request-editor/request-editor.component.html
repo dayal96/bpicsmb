@@ -1,0 +1,11 @@
+<ng-template [ngIf]="!!request">
+  <input
+    type="text"
+    [(ngModel)]="request.title"
+    (ngModelChange)="emitChange()"
+  />
+  <text-editor
+    [(content)]="request.content"
+    (contentChange)="emitChange()"
+  ></text-editor>
+</ng-template>

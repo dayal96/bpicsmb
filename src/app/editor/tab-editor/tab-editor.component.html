@@ -1,12 +1,13 @@
 <div class="editor">
   <div class="top-bar">
-    <span *ngFor="let tab of tabs" class="tab" (click)="switch(tab)">
+    <span *ngFor="let tab of tabs" class="tab" (click)="switch(tab, $event)">
       {{ tab.title + (tab.saved ? "" : "*") }}
+      <button (click)="closeTab(tab, $event)">X</button>
     </span>
+    <span class="tab" (click)="addNewTab()">+</span>
   </div>
-  <text-editor
-    *ngIf="!!activeTab"
-    [(content)]="activeTab.content"
-    (contentChange)="markAsChanged(activeTab)"
-  ></text-editor>
+  <app-request-editor
+    [(request)]="this.activeTab"
+    (requestChange)="markAsChanged(this.activeTab)"
+  ></app-request-editor>
 </div>
