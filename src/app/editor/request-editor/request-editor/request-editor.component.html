@@ -1,11 +1,15 @@
-<ng-template [ngIf]="!!request">
-  <input
-    type="text"
-    [(ngModel)]="request.title"
-    (ngModelChange)="emitChange()"
-  />
-  <text-editor
-    [(content)]="request.content"
-    (contentChange)="emitChange()"
-  ></text-editor>
-</ng-template>
+<div class="window" *ngIf="!!request">
+  <div class="form">
+    <input
+      type="text"
+      [(ngModel)]="request.title"
+      (ngModelChange)="emitChange()"
+    />
+  </div>
+  <div class="editor">
+    <text-editor
+      [(content)]="request.content"
+      (contentChange)="emitChange()"
+    ></text-editor>
+  </div>
+</div>

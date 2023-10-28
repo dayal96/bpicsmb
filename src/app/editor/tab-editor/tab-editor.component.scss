@@ -1,5 +1,8 @@
-.editor {
+.window {
   height: 100%;
+  max-height: 100%;
+  display: block;
+  overflow: hidden;
 }
 
 .top-bar {
@@ -7,6 +10,13 @@
   flex-direction: row;
   flex-wrap: nowrap;
   overflow-x: auto;
+  height: 30px;
+}
+
+.editor {
+  height: calc(100% - 30px);
+  max-height: calc(100% - 30px);
+  overflow: hidden;
 }
 
 .tab {

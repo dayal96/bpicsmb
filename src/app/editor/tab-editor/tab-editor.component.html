@@ -1,4 +1,4 @@
-<div class="editor">
+<div class="window">
   <div class="top-bar">
     <span *ngFor="let tab of tabs" class="tab" (click)="switch(tab, $event)">
       {{ tab.title + (tab.saved ? "" : "*") }}
@@ -6,8 +6,10 @@
     </span>
     <span class="tab" (click)="addNewTab()">+</span>
   </div>
-  <app-request-editor
-    [(request)]="this.activeTab"
-    (requestChange)="markAsChanged(this.activeTab)"
-  ></app-request-editor>
+  <div class="editor">
+    <app-request-editor
+      [(request)]="this.activeTab"
+      (requestChange)="markAsChanged(this.activeTab)"
+    ></app-request-editor>
+  </div>
 </div>
