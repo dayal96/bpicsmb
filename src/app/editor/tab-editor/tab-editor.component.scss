@@ -20,16 +20,23 @@
 }
 
 .tab {
-  padding: 1px;
-  border-left: 1px solid black;
+  padding: 0px;
+  padding-left: 10px;
+  border-right: 1px solid black;
   border-bottom: 1px solid black;
   border-radius: 5px;
   white-space: nowrap;
   color: aliceblue;
   background-color: inherit;
+  font-size: 14pt;
 
   &:hover {
     background-color: #0a0a0a;
     cursor: pointer;
   }
+}
+
+.tab-button {
+  padding: 8px;
+  font-size: 16pt;
 }

@@ -2,9 +2,9 @@
   <div class="top-bar">
     <span *ngFor="let tab of tabs" class="tab" (click)="switch(tab, $event)">
       {{ tab.title + (tab.saved ? "" : "*") }}
-      <button (click)="closeTab(tab, $event)">X</button>
+      <button class="tab-button" (click)="closeTab(tab, $event)">x</button>
     </span>
-    <span class="tab" (click)="addNewTab()">+</span>
+    <button class="tab tab-button" (click)="addNewTab()">+</button>
   </div>
   <div class="editor">
     <app-request-editor
