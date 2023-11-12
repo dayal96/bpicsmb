@@ -5,7 +5,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { Request } from 'src/app/model/request';
+import { BpicsmnRequest } from 'src/app/model/bpicsmn-request';
 
 @Component({
   selector: 'app-request-editor',
@@ -14,8 +14,8 @@ import { Request } from 'src/app/model/request';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RequestEditorComponent {
-  @Input() request?: Request;
-  @Output() requestChange = new EventEmitter<Request>();
+  @Input() request?: BpicsmnRequest;
+  @Output() requestChange = new EventEmitter<BpicsmnRequest>();
 
   emitChange() {
     if (this.request) {

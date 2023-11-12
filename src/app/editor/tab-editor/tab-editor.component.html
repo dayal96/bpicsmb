@@ -1,7 +1,25 @@
 <div class="window">
   <div class="top-bar">
-    <span *ngFor="let tab of tabs" class="tab" (click)="switch(tab, $event)">
-      {{ tab.title + (tab.saved ? "" : "*") }}
+    <span
+      *ngFor="let tab of tabs"
+      [ngClass]="{ tab: true, active: tab.id === activeTab?.id }"
+      (click)="switch(tab, $event)"
+      (dblclick)="editName($event)"
+    >
+      <ng-template [ngIf]="!editingName">
+        {{ tab.title + (tab.saved ? "" : "*") }}
+      </ng-template>
+      <ng-template [ngIf]="editingName">
+        <input
+          class="name-edit"
+          [ngStyle]="{ 'width.ch': tab.title.length, 'min-width.ch': 10 }"
+          (blur)="saveName()"
+          type="text"
+          [(ngModel)]="tab.title"
+          (ngModelChange)="markAsChanged(tab)"
+          #tabNameInput
+        />
+      </ng-template>
       <button class="tab-button" (click)="closeTab(tab, $event)">x</button>
     </span>
     <button class="tab tab-button" (click)="addNewTab()">+</button>

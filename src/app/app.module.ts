@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ResizableFrameComponent } from './common/resizable-frame/resizable-frame.component';
 import { TextEditorComponent } from './editor/text-editor/text-editor.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { TabEditorComponent } from './editor/tab-editor/tab-editor.component';
 import { RequestEditorComponent } from './editor/request-editor/request-editor/request-editor.component';
 
@@ -17,7 +18,7 @@ import { RequestEditorComponent } from './editor/request-editor/request-editor/r
     TabEditorComponent,
     RequestEditorComponent,
   ],
-  imports: [AppRoutingModule, BrowserModule, FormsModule],
+  imports: [AppRoutingModule, BrowserModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

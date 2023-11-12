@@ -1,3 +1,11 @@
+.wide-input {
+  width: 100%;
+  font-size: 14pt;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-radius: 5px;
+}
+
 .window {
   display: flex;
   flex-direction: column;

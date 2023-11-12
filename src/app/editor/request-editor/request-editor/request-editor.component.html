@@ -1,6 +1,7 @@
 <div class="window" *ngIf="!!request">
   <div class="form">
     <input
+      class="wide-input"
       type="text"
       [(ngModel)]="request.title"
       (ngModelChange)="emitChange()"

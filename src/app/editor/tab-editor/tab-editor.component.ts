@@ -3,15 +3,17 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   OnChanges,
   Output,
   SimpleChanges,
+  ViewChild,
   inject,
 } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Request } from 'src/app/model/request';
+import { BpicsmnRequest, RequestType } from 'src/app/model/bpicsmn-request';
 
 @Component({
   selector: 'tab-editor',
@@ -22,12 +24,21 @@ import { Request } from 'src/app/model/request';
 export class TabEditorComponent implements AfterViewInit, OnChanges {
   private cdRef = inject(ChangeDetectorRef);
 
-  tabs: Request[] = [];
-  activeTab?: Request;
-
-  @Input() filesToOpen?: Observable<Request>;
-  @Output() fileSaved = new EventEmitter<Request>();
+  @Input() filesToOpen?: Observable<BpicsmnRequest>;
+  @Output() fileSaved = new EventEmitter<BpicsmnRequest>();
   @Output() ready = new EventEmitter<void>();
+
+  @ViewChild('tabNameInput') set tabNameInput(
+    ele: ElementRef<HTMLInputElement>
+  ) {
+    if (ele) {
+      ele.nativeElement.focus();
+    }
+  }
+
+  tabs: BpicsmnRequest[] = [];
+  activeTab?: BpicsmnRequest;
+  editingName: boolean = false;
 
   ngAfterViewInit(): void {
     document.addEventListener('keydown', this.keyHandler);
@@ -56,12 +67,21 @@ export class TabEditorComponent implements AfterViewInit, OnChanges {
     }
   };
 
-  switch(tab: Request, event: MouseEvent) {
+  switch(tab: BpicsmnRequest, event: MouseEvent) {
     this.activeTab = tab;
     event.stopPropagation();
   }
 
-  markAsChanged(tab: Request | undefined) {
+  editName(event: MouseEvent) {
+    this.editingName = true;
+    event.stopPropagation();
+  }
+
+  saveName() {
+    this.editingName = false;
+  }
+
+  markAsChanged(tab: BpicsmnRequest | undefined) {
     if (tab) {
       tab.saved = false;
     }
@@ -69,16 +89,20 @@ export class TabEditorComponent implements AfterViewInit, OnChanges {
 
   addNewTab(): void {
     const newTab = {
+      type: RequestType.GET,
       id: crypto.randomUUID(),
       title: 'Untitled',
       content: '',
       saved: false,
+      url: '',
+      headers: {},
+      params: {},
     };
     this.tabs.push(newTab);
     this.activeTab = newTab;
   }
 
-  closeTab(toClose: Request, event: MouseEvent): void {
+  closeTab(toClose: BpicsmnRequest, event: MouseEvent): void {
     this.tabs = this.tabs.filter((tab) => tab.id !== toClose.id);
     if (toClose.id === this.activeTab?.id) {
       this.activeTab = undefined;

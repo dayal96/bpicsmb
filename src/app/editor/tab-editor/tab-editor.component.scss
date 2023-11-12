@@ -1,3 +1,8 @@
+.name-edit {
+  border: none;
+  font-size: 14pt;
+}
+
 .window {
   height: 100%;
   max-height: 100%;
@@ -22,8 +27,8 @@
 .tab {
   padding: 0px;
   padding-left: 10px;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
   border-radius: 5px;
   white-space: nowrap;
   color: aliceblue;
@@ -34,6 +39,11 @@
     background-color: #3a3a3a;
     cursor: pointer;
   }
+}
+
+.active {
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
 }
 
 .tab-button {
