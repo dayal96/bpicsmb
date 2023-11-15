@@ -24,10 +24,12 @@ export class RequestEditorComponent {
     this.updateRequestTypeColor();
   }
 
-  toEdit?: BpicsmnRequest;
+  EditorView = EditorView;
   RequestType = RequestType;
 
+  toEdit?: BpicsmnRequest;
   typeColor = '#202020';
+  editorView: EditorView = EditorView.HEADERS;
 
   typeChange() {
     this.updateRequestTypeColor();
@@ -71,9 +73,16 @@ export class RequestEditorComponent {
       this.emitChange();
     }
   }
+
+  addRequestParam() {
+    if (this.toEdit) {
+      this.toEdit.params.push(['', '']);
+      this.emitChange();
+    }
+  }
 }
 
 export enum EditorView {
-  REQUEST_BODY,
+  REQUEST_PARAMS,
   HEADERS,
 }

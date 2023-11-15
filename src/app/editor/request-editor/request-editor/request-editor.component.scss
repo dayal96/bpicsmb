@@ -1,8 +1,9 @@
 .url-field {
-  font-size: 14pt;
+  font-size: 12pt;
   border: 1px solid #505050;
   border-radius: 5px;
   height: 100%;
+  padding: 5px;
 
   &:focus {
     outline: none;
@@ -10,8 +11,11 @@
   }
 }
 
+option {
+  text-align: center;
+}
+
 .form-field {
-  font-size: 14pt;
   border-bottom: 1px solid #505050;
   border-right: 1px solid #505050;
   border-radius: 5px;
@@ -27,6 +31,7 @@
   text-align: center;
   font-size: 14pt;
   border-bottom: 1px solid #505050;
+  padding: 5px;
 }
 
 .headers {
@@ -36,10 +41,6 @@
 
   div {
     height: 30px;
-  }
-
-  button {
-    width: 30px;
   }
 }
 

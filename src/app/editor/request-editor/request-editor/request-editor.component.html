@@ -17,25 +17,31 @@
       (ngModelChange)="emitChange()"
     />
   </div>
-  <div>
+  <div class="flex-row width-100">
+    <button class="" (click)="addHeader()">+</button>
     <div class="flex-row width-100">
-      <button class="" (click)="addHeader()">+</button>
-      <div class="flex-row width-100">
-        <span class="label width-50"> Header </span>
-        <span class="label width-50"> Value </span>
-      </div>
+      <span *ngIf="editorView === EditorView.HEADERS" class="label width-50">
+        Header
+      </span>
+      <span
+        *ngIf="editorView === EditorView.REQUEST_PARAMS"
+        class="label width-50"
+      >
+        Request Param
+      </span>
+      <span class="label width-50"> Value </span>
     </div>
   </div>
   <div class="flex-col height-100">
     <resizable-frame
       class="height-100"
-      [size]="50"
+      [size]="40"
       direction="VERTICAL"
       [sizeMin]="10"
       [sizeMax]="90"
     >
       <div class="height-100" first>
-        <div class="headers">
+        <div *ngIf="editorView === EditorView.HEADERS" class="headers">
           <div
             class="flex-row width-100"
             *ngFor="let header of toEdit.headers; index as i"
@@ -46,11 +52,35 @@
                 class="form-field width-50"
                 type="text"
                 [(ngModel)]="header[0]"
+                (ngModelChange)="emitChange()"
               />
               <input
                 class="form-field width-50"
                 type="text"
                 [(ngModel)]="header[1]"
+                (ngModelChange)="emitChange()"
+              />
+            </div>
+          </div>
+        </div>
+        <div *ngIf="editorView === EditorView.REQUEST_PARAMS" class="headers">
+          <div
+            class="flex-row width-100"
+            *ngFor="let param of toEdit.params; index as i"
+          >
+            <button (click)="removeHeader(i)">-</button>
+            <div class="flex-row width-100">
+              <input
+                class="form-field width-50"
+                type="text"
+                [(ngModel)]="param[0]"
+                (ngModelChange)="emitChange()"
+              />
+              <input
+                class="form-field width-50"
+                type="text"
+                [(ngModel)]="param[1]"
+                (ngModelChange)="emitChange()"
               />
             </div>
           </div>
