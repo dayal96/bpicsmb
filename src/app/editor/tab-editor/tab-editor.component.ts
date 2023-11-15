@@ -95,8 +95,8 @@ export class TabEditorComponent implements AfterViewInit, OnChanges {
       content: '',
       saved: false,
       url: '',
-      headers: {},
-      params: {},
+      headers: [],
+      params: [],
     };
     this.tabs.push(newTab);
     this.activeTab = newTab;

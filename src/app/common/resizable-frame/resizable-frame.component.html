@@ -2,8 +2,14 @@
   <div class="no-min-size" #first>
     <ng-content select="[first]"></ng-content>
   </div>
-  <div [ngClass]="_edgeClass" #dragArea>
-    <div #edge></div>
+  <div
+    [ngClass]="{
+      'h-layout': direction === 'VERTICAL',
+      'v-layout': direction === 'HORIZONTAL'
+    }"
+    #dragArea
+  >
+    <div [ngClass]="{ highlight: active, sep: !active }" #edge></div>
   </div>
   <div class="no-min-size" #second>
     <ng-content select="[second]"></ng-content>

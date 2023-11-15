@@ -1,16 +1,65 @@
-<div class="window" *ngIf="!!request">
-  <div class="form">
+<div class="flex-col height-100" *ngIf="!!toEdit">
+  <div class="flex-row">
+    <select
+      [ngStyle]="{ 'background-color': typeColor }"
+      [(ngModel)]="toEdit.type"
+      (ngModelChange)="typeChange()"
+    >
+      <option [ngValue]="RequestType.GET">GET</option>
+      <option [ngValue]="RequestType.POST">POST</option>
+      <option [ngValue]="RequestType.PUT">PUT</option>
+      <option [ngValue]="RequestType.DELETE">DELETE</option>
+    </select>
     <input
-      class="wide-input"
+      class="form-field width-100"
       type="text"
-      [(ngModel)]="request.title"
+      [(ngModel)]="toEdit.url"
       (ngModelChange)="emitChange()"
     />
   </div>
-  <div class="editor">
-    <text-editor
-      [(content)]="request.content"
-      (contentChange)="emitChange()"
-    ></text-editor>
+  <div>
+    <div class="flex-row width-100">
+      <button class="" (click)="addHeader()">+</button>
+      <div class="flex-row width-100">
+        <span class="label width-50"> Header </span>
+        <span class="label width-50"> Value </span>
+      </div>
+    </div>
+  </div>
+  <div class="flex-col height-100">
+    <resizable-frame
+      class="height-100"
+      [size]="50"
+      direction="VERTICAL"
+      [sizeMin]="20"
+      [sizeMax]="80"
+    >
+      <div class="headers" first>
+        <div
+          class="flex-row width-100"
+          *ngFor="let header of toEdit.headers; index as i"
+        >
+          <button (click)="removeHeader(i)">-</button>
+          <div class="flex-row width-100">
+            <input
+              class="form-field width-50"
+              type="text"
+              [(ngModel)]="header[0]"
+            />
+            <input
+              class="form-field width-50"
+              type="text"
+              [(ngModel)]="header[1]"
+            />
+          </div>
+        </div>
+      </div>
+      <div second>
+        <text-editor
+          [(content)]="toEdit.content"
+          (contentChange)="emitChange()"
+        ></text-editor>
+      </div>
+    </resizable-frame>
   </div>
 </div>

@@ -35,19 +35,13 @@
 }
 
 .v-layout {
-  width: 10px;
+  width: 14px;
   height: 100%;
-  margin-left: -4px;
-  margin-right: -4px;
+  margin-left: -6px;
+  margin-right: -6px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-
-  div {
-    border: 1px solid #404040;
-    height: 100%;
-    width: 0%;
-  }
 
   &:hover {
     cursor: col-resize;
@@ -57,4 +51,14 @@
       width: 0%;
     }
   }
+}
+
+.sep {
+  border: 1px solid #404040;
+  height: 100%;
+  width: 0%;
+}
+
+.highlight {
+  border: 1px solid #0080f0;
 }

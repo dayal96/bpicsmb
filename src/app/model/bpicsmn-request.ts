@@ -5,8 +5,8 @@ export interface BpicsmnRequest {
   title: string;
   saved: boolean;
   url: string;
-  headers: { [header: string]: string | string[] };
-  params: { [param: string]: string | string[] };
+  headers: [string, string][];
+  params: [string, string][];
   body?: string;
 }
 
@@ -14,4 +14,5 @@ export enum RequestType {
   GET,
   POST,
   PUT,
+  DELETE,
 }

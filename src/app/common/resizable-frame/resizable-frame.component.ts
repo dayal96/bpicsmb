@@ -21,13 +21,13 @@ export class ResizableFrameComponent implements OnInit, AfterViewInit {
   @Input() sizeMax: number = 100;
   @Input() direction: 'VERTICAL' | 'HORIZONTAL' = 'VERTICAL';
   @Input() resizable: boolean = true;
-  _edgeClass: string = 'edge-row';
   _size: number = 50;
   _sizeMin: number = 0;
   _sizeMax: number = 100;
   active = false;
-  start: number = -1;
   _gen_style: GridStyle = {} as GridStyle;
+
+  start = -1;
 
   @ViewChild('frameContainer')
   frameContainer!: ElementRef<HTMLDivElement>;
@@ -50,6 +50,7 @@ export class ResizableFrameComponent implements OnInit, AfterViewInit {
     this.active = true;
     this.start = this.direction == 'HORIZONTAL' ? evt.clientX : evt.clientY;
     evt.preventDefault();
+    this.changeDetectorRef.detectChanges();
   };
 
   mouseUp = (evt: MouseEvent) => {
@@ -59,8 +60,8 @@ export class ResizableFrameComponent implements OnInit, AfterViewInit {
 
     document.body.style.cursor = 'default';
     this.active = false;
-    this.start = -1;
     evt.preventDefault();
+    this.changeDetectorRef.detectChanges();
   };
 
   mouseMove = (evt: MouseEvent) => {
@@ -69,18 +70,22 @@ export class ResizableFrameComponent implements OnInit, AfterViewInit {
     }
 
     const flowHori = this.direction == 'HORIZONTAL';
-    const mousePos = flowHori ? evt.clientX : evt.clientY;
+    const pos0 = flowHori
+      ? this.frameContainer.nativeElement.getBoundingClientRect().left
+      : this.frameContainer.nativeElement.getBoundingClientRect().top;
     const divSize = flowHori
       ? this.frameContainer.nativeElement.clientWidth
       : this.frameContainer.nativeElement.clientHeight;
 
-    const deltaSize = ((mousePos - this.start) / (divSize ?? 1)) * 100;
-    this._size += deltaSize;
-    this._size = Math.max(this._sizeMin, Math.min(this._size, this._sizeMax));
-    this.start = Math.max(
-      (this._sizeMin * divSize) / 100,
-      Math.min((this._sizeMax * divSize) / 100, mousePos)
-    );
+    const min = pos0 + ((divSize - pos0) * this.sizeMin) / 100;
+    const max = pos0 + ((divSize - pos0) * this.sizeMax) / 100;
+
+    let mousePos = flowHori ? evt.clientX : evt.clientY;
+    mousePos = Math.max(min, Math.min(max, mousePos));
+
+    this._size = ((mousePos - pos0) / (divSize ?? 1)) * 100;
+    // this._size = Math.max(this._sizeMin, Math.min(this._size, this._sizeMax));
+    this.start = mousePos;
     this.updateStyle();
   };
 
@@ -89,11 +94,9 @@ export class ResizableFrameComponent implements OnInit, AfterViewInit {
     if (this.direction == 'VERTICAL') {
       this._gen_style['grid-template-columns'] = undefined;
       this._gen_style['grid-template-rows'] = style;
-      this._edgeClass = 'h-layout';
     } else {
       this._gen_style['grid-template-columns'] = style;
       this._gen_style['grid-template-rows'] = undefined;
-      this._edgeClass = 'v-layout';
     }
     this.changeDetectorRef.detectChanges();
   }
