@@ -34,23 +34,25 @@
       [sizeMin]="10"
       [sizeMax]="90"
     >
-      <div class="headers" first>
-        <div
-          class="flex-row width-100"
-          *ngFor="let header of toEdit.headers; index as i"
-        >
-          <button (click)="removeHeader(i)">-</button>
-          <div class="flex-row width-100">
-            <input
-              class="form-field width-50"
-              type="text"
-              [(ngModel)]="header[0]"
-            />
-            <input
-              class="form-field width-50"
-              type="text"
-              [(ngModel)]="header[1]"
-            />
+      <div class="height-100" first>
+        <div class="headers">
+          <div
+            class="flex-row width-100"
+            *ngFor="let header of toEdit.headers; index as i"
+          >
+            <button (click)="removeHeader(i)">-</button>
+            <div class="flex-row width-100">
+              <input
+                class="form-field width-50"
+                type="text"
+                [(ngModel)]="header[0]"
+              />
+              <input
+                class="form-field width-50"
+                type="text"
+                [(ngModel)]="header[1]"
+              />
+            </div>
           </div>
         </div>
       </div>
