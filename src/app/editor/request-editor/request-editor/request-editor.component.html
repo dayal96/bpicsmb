@@ -11,7 +11,7 @@
       <option [ngValue]="RequestType.DELETE">DELETE</option>
     </select>
     <input
-      class="form-field width-100"
+      class="url-field width-100"
       type="text"
       [(ngModel)]="toEdit.url"
       (ngModelChange)="emitChange()"
@@ -31,8 +31,8 @@
       class="height-100"
       [size]="50"
       direction="VERTICAL"
-      [sizeMin]="20"
-      [sizeMax]="80"
+      [sizeMin]="10"
+      [sizeMax]="90"
     >
       <div class="headers" first>
         <div
@@ -54,7 +54,7 @@
           </div>
         </div>
       </div>
-      <div second>
+      <div class="height-100" second>
         <text-editor
           [(content)]="toEdit.content"
           (contentChange)="emitChange()"

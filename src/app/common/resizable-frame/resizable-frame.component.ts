@@ -74,11 +74,13 @@ export class ResizableFrameComponent implements OnInit, AfterViewInit {
       ? this.frameContainer.nativeElement.getBoundingClientRect().left
       : this.frameContainer.nativeElement.getBoundingClientRect().top;
     const divSize = flowHori
-      ? this.frameContainer.nativeElement.clientWidth
-      : this.frameContainer.nativeElement.clientHeight;
+      ? this.frameContainer.nativeElement.getBoundingClientRect().width
+      : this.frameContainer.nativeElement.getBoundingClientRect().height;
 
-    const min = pos0 + ((divSize - pos0) * this.sizeMin) / 100;
-    const max = pos0 + ((divSize - pos0) * this.sizeMax) / 100;
+    const min = pos0 + (divSize * this.sizeMin) / 100;
+    const max = pos0 + (divSize * this.sizeMax) / 100;
+
+    console.log(pos0, min, max, pos0 + divSize);
 
     let mousePos = flowHori ? evt.clientX : evt.clientY;
     mousePos = Math.max(min, Math.min(max, mousePos));

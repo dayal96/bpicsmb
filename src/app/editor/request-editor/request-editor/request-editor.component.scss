@@ -1,19 +1,37 @@
-.form-field {
+.url-field {
   font-size: 14pt;
-  border-bottom: 1px solid #a0a0a0;
-  border-right: 1px solid #a0a0a0;
+  border: 1px solid #505050;
   border-radius: 5px;
   height: 100%;
+
+  &:focus {
+    outline: none;
+    border: 1px solid #909090;
+  }
+}
+
+.form-field {
+  font-size: 14pt;
+  border-bottom: 1px solid #505050;
+  border-right: 1px solid #505050;
+  border-radius: 5px;
+  height: 100%;
+
+  &:focus {
+    outline: none;
+    border: 1px solid #909090;
+  }
 }
 
 .label {
   text-align: center;
   font-size: 14pt;
-  border-bottom: 1px solid #a0a0a0;
+  border-bottom: 1px solid #505050;
 }
 
 .headers {
   width: 100%;
+  hieght: 100%;
   overflow: scroll;
 
   div {
