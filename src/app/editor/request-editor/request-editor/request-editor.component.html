@@ -18,7 +18,9 @@
       [(ngModel)]="toEdit.url"
       (ngModelChange)="emitChange()"
     />
-    <button class="send-button brighten-on-hover">SEND</button>
+    <button (click)="sendRequest()" class="send-button brighten-on-hover">
+      SEND
+    </button>
   </div>
 
   <!-- Request Content Tabs -->
@@ -103,7 +105,10 @@
           </div>
         </div>
         <div *ngIf="editorView === EditorView.BODY" class="headers">
-          <text-editor [(content)]="toEdit.content"></text-editor>
+          <text-editor
+            [(content)]="toEdit.content"
+            (contentChange)="emitChange()"
+          ></text-editor>
         </div>
       </div>
       <!-- Response Content -->

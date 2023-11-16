@@ -19,6 +19,7 @@ export class RequestEditorComponent {
   private cdRef = inject(ChangeDetectorRef);
 
   @Output() requestChange = new EventEmitter<BpicsmnRequest>();
+  @Output() sendPressed = new EventEmitter<void>();
 
   @Input() response: string = '';
 
@@ -54,6 +55,10 @@ export class RequestEditorComponent {
         this.typeColor = '#FF5050';
       }
     }
+  }
+
+  sendRequest() {
+    this.sendPressed.emit();
   }
 
   emitChange() {
