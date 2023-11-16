@@ -11,6 +11,10 @@
   }
 }
 
+.active {
+  background-color: #2060a0;
+}
+
 option {
   text-align: center;
 }
@@ -28,7 +32,9 @@ option {
 }
 
 .send-button {
-  background-color: #20a020;
+  width: 80px;
+  background-color: #509040;
+  text-align: center;
 }
 
 .label {

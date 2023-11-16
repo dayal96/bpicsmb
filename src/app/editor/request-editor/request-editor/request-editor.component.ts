@@ -34,6 +34,8 @@ export class RequestEditorComponent {
   typeColor = '#202020';
   editorView: EditorView = EditorView.HEADERS;
 
+  VIEWS = [EditorView.HEADERS, EditorView.PARAMS, EditorView.BODY];
+
   typeChange() {
     this.updateRequestTypeColor();
     // this.cdRef.detectChanges();
@@ -70,6 +72,18 @@ export class RequestEditorComponent {
     }
   }
 
+  switchView(newView: EditorView) {
+    this.editorView = newView;
+  }
+
+  add() {
+    if (this.editorView === EditorView.HEADERS) {
+      this.addHeader();
+    } else if (this.editorView === EditorView.PARAMS) {
+      this.addRequestParam();
+    }
+  }
+
   addHeader() {
     if (this.toEdit) {
       this.toEdit.headers.push(['', '']);
@@ -86,6 +100,7 @@ export class RequestEditorComponent {
 }
 
 export enum EditorView {
-  REQUEST_PARAMS,
-  HEADERS,
+  PARAMS = 'REQUEST PARAMS',
+  HEADERS = 'REQUEST HEADERS',
+  BODY = 'REQUEST BODY',
 }

@@ -45,8 +45,8 @@ export class TextEditorComponent implements AfterViewInit {
   tabHandler(): void {
     const pos = this.textEditorRef.nativeElement.selectionStart;
     this.content =
-      this.content.substring(0, pos) + '\t' + this.content.substring(pos);
-    this.updatePos(pos + 1);
+      this.content.substring(0, pos) + '    ' + this.content.substring(pos);
+    this.updatePos(pos + 4);
     this.changeDetectorRef.detectChanges();
   }
 
