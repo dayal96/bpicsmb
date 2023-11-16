@@ -18,6 +18,7 @@ import {
 })
 export class TextEditorComponent implements AfterViewInit {
   @Input() content: string = '';
+  @Input() readonly: boolean = false;
   @Output() contentChange = new EventEmitter<string>();
   cursorPos: number = 0;
   cursorInFocus = false;
@@ -56,7 +57,12 @@ export class TextEditorComponent implements AfterViewInit {
   }
 
   contentUpdate(newContent: string) {
-    this.content = newContent;
-    this.contentChange.emit(this.content);
+    if (!this.readonly) {
+      this.content = newContent;
+      this.contentChange.emit(this.content);
+    } else {
+      this.content = this.content;
+      this.textEditorRef.nativeElement.value = this.content;
+    }
   }
 }

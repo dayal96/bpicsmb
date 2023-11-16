@@ -87,10 +87,7 @@
         </div>
       </div>
       <div class="height-100" second>
-        <text-editor
-          [(content)]="toEdit.content"
-          (contentChange)="emitChange()"
-        ></text-editor>
+        <text-editor [(content)]="response" [readonly]="true"></text-editor>
       </div>
     </resizable-frame>
   </div>

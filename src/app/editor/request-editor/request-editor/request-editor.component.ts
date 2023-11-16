@@ -19,6 +19,9 @@ export class RequestEditorComponent {
   private cdRef = inject(ChangeDetectorRef);
 
   @Output() requestChange = new EventEmitter<BpicsmnRequest>();
+
+  @Input() response: string = 'Hello World!';
+
   @Input() set request(requestBody: BpicsmnRequest | undefined) {
     this.toEdit = requestBody;
     this.updateRequestTypeColor();
