@@ -31,7 +31,7 @@ html {
 ::-webkit-scrollbar-thumb {
   background-color: #505050;
   &:hover {
-    background-color: #909090;
+    background-color: #606060;
   }
 }
 
@@ -52,7 +52,13 @@ button {
   background-color: inherit;
 
   &:hover {
-    background-color: #909090;
+    background-color: #606060;
+  }
+}
+
+.brighten-on-hover {
+  &:hover {
+    filter: brightness(120%);
   }
 }
 

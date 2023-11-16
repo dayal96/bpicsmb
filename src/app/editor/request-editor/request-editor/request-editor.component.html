@@ -1,6 +1,7 @@
 <div class="flex-col height-100" *ngIf="!!toEdit">
   <div class="flex-row">
     <select
+      class="brighten-on-hover"
       [ngStyle]="{ 'background-color': typeColor }"
       [(ngModel)]="toEdit.type"
       (ngModelChange)="typeChange()"
@@ -16,6 +17,7 @@
       [(ngModel)]="toEdit.url"
       (ngModelChange)="emitChange()"
     />
+    <button class="send-button brighten-on-hover">SEND</button>
   </div>
   <div class="flex-row width-100">
     <button class="" (click)="addHeader()">+</button>

@@ -27,6 +27,10 @@ option {
   }
 }
 
+.send-button {
+  background-color: #20a020;
+}
+
 .label {
   text-align: center;
   font-size: 14pt;
@@ -45,7 +49,7 @@ option {
 }
 
 button {
-  width: 30px;
+  min-width: 30px;
   height: 30px;
 }
 

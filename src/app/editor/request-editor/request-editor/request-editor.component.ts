@@ -20,7 +20,7 @@ export class RequestEditorComponent {
 
   @Output() requestChange = new EventEmitter<BpicsmnRequest>();
 
-  @Input() response: string = 'Hello World!';
+  @Input() response: string = '';
 
   @Input() set request(requestBody: BpicsmnRequest | undefined) {
     this.toEdit = requestBody;
