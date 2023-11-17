@@ -24,7 +24,7 @@
   </div>
 
   <!-- Request Content Tabs -->
-  <div class="flex-row justify width-100">
+  <div class="flex-row justify-even width-100">
     <button
       *ngFor="let view of VIEWS"
       class="width-100"
@@ -55,8 +55,8 @@
       class="height-100"
       [size]="40"
       direction="VERTICAL"
-      [sizeMin]="10"
-      [sizeMax]="90"
+      [sizeMin]="15"
+      [sizeMax]="85"
     >
       <!-- Request Content -->
       <div class="height-100" first>
@@ -112,8 +112,16 @@
         </div>
       </div>
       <!-- Response Content -->
-      <div class="height-100" second>
-        <text-editor [(content)]="response" [readonly]="true"></text-editor>
+      <div class="flex-col height-100" second>
+        <div class="flex-row justify-right width-100">
+          <span>Status: {{ response?.status }}</span>
+          <span>Time: {{ (response?.timeMillis ?? 0) / 1000 }}s </span>
+        </div>
+        <text-editor
+          class="height-100"
+          [content]="response?.body ?? ''"
+          [readonly]="true"
+        ></text-editor>
       </div>
     </resizable-frame>
   </div>

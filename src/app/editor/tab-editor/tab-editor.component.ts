@@ -14,6 +14,7 @@ import {
 } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BpicsmnRequest, RequestType } from 'src/app/model/bpicsmn-request';
+import { BpicsmnResponse } from 'src/app/model/bpicsmn-response';
 
 @Component({
   selector: 'tab-editor',
@@ -27,6 +28,8 @@ export class TabEditorComponent implements AfterViewInit, OnChanges {
   @Input() filesToOpen?: Observable<BpicsmnRequest>;
   @Output() fileSaved = new EventEmitter<BpicsmnRequest>();
   @Output() ready = new EventEmitter<void>();
+
+  response?: BpicsmnResponse;
 
   @ViewChild('tabNameInput') set tabNameInput(
     ele: ElementRef<HTMLInputElement>
@@ -109,4 +112,6 @@ export class TabEditorComponent implements AfterViewInit, OnChanges {
     }
     event.stopPropagation();
   }
+
+  sendRequest() {}
 }

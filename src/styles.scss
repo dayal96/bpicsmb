@@ -74,8 +74,12 @@ button {
   flex-wrap: nowrap;
 }
 
-.justify {
+.justify-even {
   justify-content: space-evenly;
+}
+
+.justify-right {
+  justify-content: right;
 }
 
 .height-100 {

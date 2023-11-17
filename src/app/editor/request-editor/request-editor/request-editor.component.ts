@@ -8,6 +8,7 @@ import {
   inject,
 } from '@angular/core';
 import { BpicsmnRequest, RequestType } from 'src/app/model/bpicsmn-request';
+import { BpicsmnResponse } from 'src/app/model/bpicsmn-response';
 
 @Component({
   selector: 'app-request-editor',
@@ -21,7 +22,7 @@ export class RequestEditorComponent {
   @Output() requestChange = new EventEmitter<BpicsmnRequest>();
   @Output() sendPressed = new EventEmitter<void>();
 
-  @Input() response: string = '';
+  @Input() response?: BpicsmnResponse;
 
   @Input() set request(requestBody: BpicsmnRequest | undefined) {
     this.toEdit = requestBody;

@@ -1,4 +1,5 @@
 <div class="window">
+  <!-- Tabs -->
   <div class="top-bar">
     <span
       *ngFor="let tab of tabs"
@@ -24,10 +25,14 @@
     </span>
     <button class="tab-button" (click)="addNewTab()">+</button>
   </div>
+
+  <!-- Request Editor -->
   <div class="editor">
     <app-request-editor
       [(request)]="this.activeTab"
       (requestChange)="markAsChanged(this.activeTab)"
+      (sendPressed)="sendRequest()"
+      [response]="response"
     ></app-request-editor>
   </div>
 </div>
